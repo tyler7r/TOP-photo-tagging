@@ -6,3 +6,10 @@
 .game-img {
     height: 96vh;
 }
+
+#end-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: orange;
+}
