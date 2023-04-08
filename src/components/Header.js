@@ -8,9 +8,6 @@ export const Header = (props) => {
                 <Link style={props.style} to='/'>Home</Link>
                 <Link style={props.style} to='/leaderboard'>Leaderboard</Link>
             </div>
-            <div id='foundPlayers'>
-
-            </div>
         </div>
     )
 }

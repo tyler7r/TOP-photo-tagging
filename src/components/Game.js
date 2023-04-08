@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CharSelect } from './CharSelect';
 import { EndGame } from './EndGame';
+import { CharacterList } from './Characters';
 import './styles/game.css';
 import { getDoc, doc, updateDoc, onSnapshot, Firestore } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -48,12 +49,15 @@ export const Game = (props) => {
     // checks if the clicked area matches the clicked character from character select menu
     // updates character found status as necessary
     const handleMenu = (char, x, y) => {
-        let coordinates = characters[char].Coordinates;
+        let character = characters[char];
+        let coordinates = character.Coordinates;
         let xCheck = between(x, coordinates[0]);
         let yCheck = between(y, coordinates[1]);
         if (xCheck === true && yCheck === true) {
-            characters[char].Found = true;
+            character.Found = true;
             setCharacters({...characters});
+        } else {
+
         }
         setShowMenu(false);
     }
@@ -92,6 +96,7 @@ export const Game = (props) => {
     if (props.level === 'easy') {
         return (
             <div id='board'>
+                <CharacterList characters={characters} />
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/ski.jpg')} alt='ski'/>
                 <CharSelect coords={coords} characters={characters} showMenu={showMenu} location={targetLocation} handleMenu={handleMenu} />
                 <EndGame status={finishedGame} time={totalTime} />
@@ -100,6 +105,7 @@ export const Game = (props) => {
     } else if (props.level === 'hard') {
         return (
             <div id='board'>
+                <CharacterList characters={characters} />
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/track.jpg')} alt='track'/>
                 <CharSelect showMenu={showMenu} coords={coords} characters={characters} location={targetLocation} handleMenu={handleMenu} />
                 <EndGame status={finishedGame} time={totalTime} />
