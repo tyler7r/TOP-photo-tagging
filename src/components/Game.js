@@ -21,6 +21,10 @@ export const Game = (props) => {
 
     const [totalTime, setTotalTime] = useState(0);
 
+    const [remainingChars, setRemainingChars] = useState([]);
+
+    const [playAgain, setPlayAgain] = useState(false);
+
     // handles clicks on gameboard, populates character select menu at the clicked spot
     const handleClick = (e) => {
         e.preventDefault();
@@ -67,10 +71,14 @@ export const Game = (props) => {
         let foundCharacters = [];
 
         const endGame = () => {
+            let copy = []
             for (const char in characters) {
                 if (characters[char].Found === true) {
                     foundCharacters.push(char);
+                } else if (characters[char].Found === false) {
+                    copy.push(char);
                 }
+                setRemainingChars(copy);
             }
             if (foundCharacters.length === 3) {
                 setFinishedGame(true);
@@ -96,19 +104,19 @@ export const Game = (props) => {
     if (props.level === 'easy') {
         return (
             <div id='board'>
-                <CharacterList characters={characters} />
+                <CharacterList remainingChars={remainingChars} />
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/ski.jpg')} alt='ski'/>
                 <CharSelect coords={coords} characters={characters} showMenu={showMenu} location={targetLocation} handleMenu={handleMenu} />
-                <EndGame status={finishedGame} time={totalTime} />
+                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} level={props.level} />
             </div>
         )
     } else if (props.level === 'hard') {
         return (
             <div id='board'>
-                <CharacterList characters={characters} />
+                <CharacterList remainingChars={remainingChars} />
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/track.jpg')} alt='track'/>
                 <CharSelect showMenu={showMenu} coords={coords} characters={characters} location={targetLocation} handleMenu={handleMenu} />
-                <EndGame status={finishedGame} time={totalTime} />
+                <EndGame status={finishedGame} time={totalTime} level={props.level} />
             </div>
         )
     }

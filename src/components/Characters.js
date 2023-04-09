@@ -1,21 +1,24 @@
 import React from 'react';
 
 export const CharacterList = (props) => {
-    let characters = [];
-    for (const char in props.characters) {
-        characters.push(char);
-    }
+    if (props.remainingChars.length > 0) {
     return (
         <div id='character-list'>
-            <div id='character-list-msg'>Character List: </div>
-            {characters.map(char => {
+            <div id='character-list-msg'>Remaining Characters: </div>
+            {props.remainingChars.map(char => {
                 return (
-                    <div key={char} className='charList-item'>
+                    <div key={char} className='character-list-item'>
+                        <div className='character-list-name'>{char}</div>
                         <img className='character-list-img' src={require(`./images/${char}.jpg`)} alt={char} />
-                        {char}
                     </div>
                 )
             })}
         </div> 
-    )
+    )} else {
+        return (
+        <div id='character-list'>
+            <div id='empty-characater-list-msg'>All Characters Found!</div>
+        </div>
+        )
+    }
 }

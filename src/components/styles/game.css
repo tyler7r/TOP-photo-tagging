@@ -37,7 +37,7 @@
     color: orange;
 }
 
-#character-list {
+#character-list, #empty-character-list-msg {
     gap: 8px;
     display: flex;
     font-weight: bold;
