@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CharSelect } from './CharSelect';
 import { EndGame } from './EndGame';
 import { CharacterList } from './Characters';
+import { PlayAgain } from './PlayAgain';
 import './styles/game.css';
 import { getDoc, doc, updateDoc, onSnapshot, Firestore } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -107,7 +108,8 @@ export const Game = (props) => {
                 <CharacterList remainingChars={remainingChars} />
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/ski.jpg')} alt='ski'/>
                 <CharSelect coords={coords} characters={characters} showMenu={showMenu} location={targetLocation} handleMenu={handleMenu} />
-                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} level={props.level} />
+                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} level={props.level} setPlayAgain={setPlayAgain} />
+                <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} />
             </div>
         )
     } else if (props.level === 'hard') {
@@ -116,7 +118,8 @@ export const Game = (props) => {
                 <CharacterList remainingChars={remainingChars} />
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/track.jpg')} alt='track'/>
                 <CharSelect showMenu={showMenu} coords={coords} characters={characters} location={targetLocation} handleMenu={handleMenu} />
-                <EndGame status={finishedGame} time={totalTime} level={props.level} />
+                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} level={props.level} setPlayAgain={setPlayAgain} />
+                <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} />
             </div>
         )
     }

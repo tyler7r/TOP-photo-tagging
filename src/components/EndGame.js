@@ -10,7 +10,8 @@ export const EndGame = (props) => {
             name: name.value,
             time: props.time,
         })
-        console.log(docRef.id);
+        console.log(docRef);
+        props.setPlayAgain(true);
     }
 
     if (props.status === true) {
@@ -19,7 +20,7 @@ export const EndGame = (props) => {
                 <div id='recorded-time'>Congrats you finished in: {props.time}s</div>
                 <label htmlFor='username'>Enter Name: </label>
                 <input type='text' name='username' id='username' placeholder='Name' />
-                <button type='submit' onClick={(e) => {addScore(e); props.setStatus()}}>Add to Leaderboard</button>
+                <button type='submit' onClick={(e) => {addScore(e); props.setStatus(false)}}>Add to Leaderboard</button>
             </div>
         )
     }

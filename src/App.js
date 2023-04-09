@@ -19,7 +19,7 @@ function App() {
       <Header style={navStyle} />
       <Routes>
         <Route path='/' element={<Home style={navStyle} setLevel={setLevel} />} />
-        <Route path='/game' element={<Game level={level} />} />
+        <Route path='/game' element={<Game style={navStyle} level={level} />} />
         <Route path='/leaderboard' element={<Leaderboard />} />
       </Routes>
     </HashRouter>
