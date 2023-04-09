@@ -10,7 +10,6 @@ export const EndGame = (props) => {
             name: name.value,
             time: props.time,
         })
-        console.log(docRef);
         props.setPlayAgain(true);
     }
 

@@ -4,7 +4,7 @@ import { EndGame } from './EndGame';
 import { CharacterList } from './Characters';
 import { PlayAgain } from './PlayAgain';
 import './styles/game.css';
-import { getDoc, doc, updateDoc, onSnapshot, Firestore } from 'firebase/firestore';
+import { getDoc, doc, updateDoc, onSnapshot, Firestore, collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export const Game = (props) => {
@@ -85,6 +85,10 @@ export const Game = (props) => {
                 setFinishedGame(true);
                 let total = (new Date () - startTime) / 1000;
                 setTotalTime(total);
+                // for (const char in characters) {
+                //     characters[char].Found = false;
+                // }
+                // setRemainingChars(characters);
             }
         }
 
