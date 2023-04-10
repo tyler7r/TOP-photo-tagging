@@ -42,7 +42,8 @@ export default function App() {
   const navStyle = {
     textDecoration: 'none',
     fontWeight: 'bold',
-    margin: '8px'
+    margin: '8px',
+    color: 'gray'
   }
 
   return (

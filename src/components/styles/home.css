@@ -1,0 +1,86 @@
+#home {
+    width: 100%;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+#main-nav {
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-weight: bold;
+    margin: 8px;
+    color: gray;
+}
+
+.nav-link:hover {
+    color: red;
+}
+
+@media screen and (max-width: 999px) {
+    #level-select {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .level-select-img {
+        height: 300px;
+        width: 480px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    #level-select {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .level-select-img {
+        height: 375px;
+    }
+}
+
+.level-choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.level-select-img {
+    border-top: 3px solid white;
+    border-bottom: 3px solid white;
+    border-left: 3px solid red;
+    border-right: 3px solid red;
+}
+
+.level-select-title {
+    color: red;
+    font-size: 24px;
+}
+
+#game-title {
+    display: flex;
+    position: sticky;
+    top: 0;
+    color: lightgray;
+    -webkit-text-stroke: 1px gray;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 64px;
+    background-image: url('../images/stripe.jpg');
+    height: 110px;
+    background-size: auto;
+    min-width: 600px;
+}
