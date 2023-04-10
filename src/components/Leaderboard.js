@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../components/styles/leaderboard.css'
 
 export const Leaderboard = (props) => {
     let { easyLeaderboard, hardLeaderboard } = props
@@ -16,6 +17,24 @@ export const Leaderboard = (props) => {
         }
     }
 
+    const leaderboardDisplay = () => {
+        if (display === easyLeaderboard) {
+            const easy = document.querySelector('#easy-leaderboard-btn');
+            const hard = document.querySelector('#hard-leaderboard-btn');
+            hard.classList.remove('selected-leaderboard');
+            easy.classList.add('selected-leaderboard');
+        } else if (display === hardLeaderboard) {
+            const hard = document.querySelector('#hard-leaderboard-btn');
+            const easy = document.querySelector('#easy-leaderboard-btn');
+            easy.classList.remove('selected-leaderboard');
+            hard.classList.add('selected-leaderboard');
+        }
+    }
+
+    useEffect(() => {
+        leaderboardDisplay();
+    }, [display])
+
     return (
         <div className='content'>
             <div id='leaderboard-menu'>
@@ -24,13 +43,23 @@ export const Leaderboard = (props) => {
             </div>
             <div id="leaderboard">
                 {display.map((score) => {
-                    return (
-                        <div key={score.id} className='leaderboard-entry'>
-                            <div className='entry-position'>{score.position}. </div>
-                            <div className='entry-name'>{score.name}</div>
-                            <div className='entry-time'>{score.time}</div>
-                        </div>
-                    )
+                    if (score.position % 2 !== 0) {
+                        return (
+                            <div key={score.id} className='leaderboard-entry odd'>
+                                <div className='entry-position'>{score.position}. </div>
+                                <div className='entry-name'>{score.name}</div>
+                                <div className='entry-time'>{score.time}</div>
+                            </div>
+                        ) 
+                    } else {
+                        return (
+                            <div key={score.id} className='leaderboard-entry even'>
+                                <div className='entry-position'>{score.position}. </div>
+                                <div className='entry-name'>{score.name}</div>
+                                <div className='entry-time'>{score.time}</div>
+                            </div>
+                        )
+                    }
                 })}
             </div>
         </div>
