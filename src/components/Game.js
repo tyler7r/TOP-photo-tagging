@@ -29,21 +29,6 @@ export const Game = (props) => {
 
     const [playAgain, setPlayAgain] = useState(false);
 
-    // handles clicks on gameboard, populates character select menu at the clicked spot
-    const handleClick = (e) => {
-        if (finishedGame === true || playAgain === true) return
-        e.preventDefault();
-
-        let xCoord = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100)
-        let yCoord = Math.round((e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100)
-
-        setTargetLocation([e.pageX, e.pageY])
-
-        setCoords([xCoord, yCoord]);
-
-        setShowMenu(!showMenu);
-    }
-
     // retrieves character level-dependent info from firestore
     useEffect(() => {
         const answersRef = doc(db, 'answers', `${props.level}`);
@@ -55,22 +40,10 @@ export const Game = (props) => {
         retrieveData();
     }, []);
 
-    // checks if the clicked area matches the clicked character from character select menu
-    // updates character found status as necessary
-    const handleMenu = (char, x, y) => {
-        let character = characters[char];
-        let coordinates = character.Coordinates;
-        let xCheck = between(x, coordinates[0]);
-        let yCheck = between(y, coordinates[1]);
-        if (xCheck === true && yCheck === true) {
-            character.Found = true;
-            setCharacters({...characters});
-            setClickResult(char);
-        } else {
-            setClickResult('Wrong');
-        }
-        setShowMenu(false);
-    }
+    // starts timer
+    useEffect(() => {
+        setStartTime(new Date());
+    }, [])
 
     // checks all characters' found status, if they all are found it sets finished game
     useEffect(() => {
@@ -96,10 +69,37 @@ export const Game = (props) => {
         endGame()
     }, [characters])
 
-    // starts timer
-    useEffect(() => {
-        setStartTime(new Date());
-    }, [])
+    // handles clicks on gameboard, populates character select menu at the clicked spot
+    const handleClick = (e) => {
+        if (finishedGame === true || playAgain === true) return
+        e.preventDefault();
+
+        let xCoord = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100)
+        let yCoord = Math.round((e.nativeEvent.offsetY / e.nativeEvent.target.offsetHeight) * 100)
+
+        setTargetLocation([e.pageX, e.pageY])
+
+        setCoords([xCoord, yCoord]);
+
+        setShowMenu(!showMenu);
+    }
+
+    // checks if the clicked area matches the clicked character from character select menu
+    // updates character found status as necessary
+    const handleMenu = (char, x, y) => {
+        let character = characters[char];
+        let coordinates = character.Coordinates;
+        let xCheck = between(x, coordinates[0]);
+        let yCheck = between(y, coordinates[1]);
+        if (xCheck === true && yCheck === true) {
+            character.Found = true;
+            setCharacters({...characters});
+            setClickResult(char);
+        } else {
+            setClickResult('Wrong');
+        }
+        setShowMenu(false);
+    }
 
     useEffect(() => {
         props.retrieve()
@@ -111,10 +111,6 @@ export const Game = (props) => {
         else return false;
     }
 
-    const restart = (props) => {
-        props.setLevel(props.level);
-    }
-
     if (props.level === 'easy') {
         return (
             <div id='board'>
@@ -122,7 +118,7 @@ export const Game = (props) => {
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/ski.jpg')} alt='ski'/>
                 <CharSelect coords={coords} characters={characters} showMenu={showMenu} location={targetLocation} handleMenu={handleMenu} />
                 <ClickResult location={targetLocation} clickResult={clickResult} setClickResult={setClickResult} />
-                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} level={props.level} setPlayAgain={setPlayAgain} />
+                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} setPlayAgain={setPlayAgain} />
                 <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} />
             </div>
         )
@@ -133,8 +129,8 @@ export const Game = (props) => {
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/track.jpg')} alt='track'/>
                 <CharSelect showMenu={showMenu} coords={coords} characters={characters} location={targetLocation} handleMenu={handleMenu} />
                 <ClickResult location={targetLocation} clickResult={clickResult} setClickResult={setClickResult} />
-                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} level={props.level} setPlayAgain={setPlayAgain} />
-                <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} lvl={props.level} restart={props.setLevel} />
+                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} setPlayAgain={setPlayAgain} />
+                <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} />
             </div>
         )
     }

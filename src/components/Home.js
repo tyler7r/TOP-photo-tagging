@@ -5,7 +5,9 @@ import '../components/styles/home.css'
 export const Home = (props) => {
     return (
         <div id='home'>
-            <div id='game-title'>WHERE'S WALDO</div>
+            <div id='game-banner'>
+                <div id='game-title'>WHERE'S WALDO?</div>
+            </div>
             <div id='level-select'>
                 <Link to='/game' style={props.style} className='level-choice' id='easy' onClick={() => props.setLevel('easy')}>
                     <div className='level-select-title'>EASY</div>

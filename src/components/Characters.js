@@ -8,6 +8,7 @@ export const CharacterList = (props) => {
                 return (
                     <div key={char} className='character-list-item'>
                         <div className='character-list-name'>{char.toUpperCase()}</div>
+                        <div className='character-list-divider'></div>
                         <img className='character-list-img' src={require(`./images/${char}.jpg`)} alt={char} />
                     </div>
                 )

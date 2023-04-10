@@ -41,7 +41,6 @@ export default function App() {
       array[i].position = i + 1;
     }
     timerStyling(array)
-    console.log(array);
   }
 
   const timerStyling = (array) => {

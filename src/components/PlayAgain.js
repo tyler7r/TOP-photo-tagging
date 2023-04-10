@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import '../components/styles/play-again.css'
 
 export const PlayAgain = (props) => {
-    console.log(props.lvl);
     const setPlayAgain = () => {
         props.setPlayAgain(false);
     }

@@ -38,8 +38,8 @@ export const Leaderboard = (props) => {
     return (
         <div className='content'>
             <div id='leaderboard-menu'>
-                <div onClick={() => changeLeaderboard('easy')} id='easy-leaderboard-btn'>Easy</div>
-                <div onClick={() => changeLeaderboard('hard')} id='hard-leaderboard-btn'>Hard</div>
+                <div onClick={() => changeLeaderboard('easy')} id='easy-leaderboard-btn'>EASY</div>
+                <div onClick={() => changeLeaderboard('hard')} id='hard-leaderboard-btn'>HARD</div>
             </div>
             <div id="leaderboard">
                 {display.map((score) => {

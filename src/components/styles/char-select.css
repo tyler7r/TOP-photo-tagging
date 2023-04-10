@@ -8,6 +8,7 @@
     padding: 8px;
     border-radius: 8px;
     border: 2px solid #e30000;
+    color: gray;
 }
 
 .char-select-divider {
@@ -18,6 +19,7 @@
 
 .char {
     background-color: white;
+    color: gray;
 }
 
 .char:hover {
