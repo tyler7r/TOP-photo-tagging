@@ -3,26 +3,37 @@ import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export const Leaderboard = (props) => {
-    const [display, setDisplay] = useState('easy');
+    let { easyLeaderboard, hardLeaderboard } = props
+    const [display, setDisplay] = useState(easyLeaderboard);
     
     useEffect(() => { 
-        if (props.level === '') {
-            props.retrieve('easy')
-        } else {
-           props.retrieve(props.level)
-        }
+        props.retrieve();
     }, [])
 
+    const changeLeaderboard = (level) => {
+        if (level === 'hard') {
+            setDisplay(hardLeaderboard);
+        } else if (level === 'easy') {
+            setDisplay(easyLeaderboard);
+        }
+    }
+
     return (
-        <div id="leaderboard">
-            {props.leaderboard.map((score) => {
-                return (
-                    <div key={score.id} className='leaderboard-entry'>
-                        <div className='entry-name'>{score.name}</div>
-                        <div className='entry-time'>{score.time}</div>
-                    </div>
-                )
-            })}
+        <div className='content'>
+            <div id='leaderboard-menu'>
+                <div onClick={() => changeLeaderboard('easy')} id='easy-leaderboard-btn'>Easy</div>
+                <div onClick={() => changeLeaderboard('hard')} id='hard-leaderboard-btn'>Hard</div>
+            </div>
+            <div id="leaderboard">
+                {display.map((score) => {
+                    return (
+                        <div key={score.id} className='leaderboard-entry'>
+                            <div className='entry-name'>{score.name}</div>
+                            <div className='entry-time'>{score.time}</div>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }

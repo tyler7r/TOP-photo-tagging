@@ -9,16 +9,24 @@ import { db } from './firebase';
 
 export default function App() {
   const [level, setLevel] = useState('');
-  const [leaderboard, setLeaderboard] = useState([]);
+  const [easyLeaderboard, setEasyLeaderboard] = useState([]);
+  const [hardLeaderboard, setHardLeaderboard] = useState([]);
 
-  const retrieveLeaderboard = async (level) => {
-    let copy = [];
-    const leaderboard = await getDocs(collection(db, `${level}-leaderboard`));
-    leaderboard.forEach((doc) => {
-        copy.push(doc.data());
-        copy[copy.length - 1].id = doc.id;
+  const retrieveLeaderboard = async () => {
+    let easyCopy = [];
+    let hardCopy = [];
+    const easyLeaderboard = await getDocs(collection(db, `easy-leaderboard`));
+    const hardLeaderboard = await getDocs(collection(db, `hard-leaderboard`));
+    easyLeaderboard.forEach((doc) => {
+        easyCopy.push(doc.data());
+        easyCopy[easyCopy.length - 1].id = doc.id;
     })
-    setLeaderboard(copy);
+    hardLeaderboard.forEach((doc) => {
+      hardCopy.push(doc.data());
+      hardCopy[hardCopy.length - 1].id = doc.id;
+    })
+    setEasyLeaderboard(easyCopy);
+    setHardLeaderboard(hardCopy);
   }
 
   const navStyle = {
@@ -33,7 +41,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Home style={navStyle} setLevel={setLevel} />} />
         <Route path='/game' element={<Game style={navStyle} level={level} />} />
-        <Route path='/leaderboard' element={<Leaderboard leaderboard={leaderboard} retrieve={retrieveLeaderboard} level={level} />} />
+        <Route path='/leaderboard' element={<Leaderboard hardLeaderboard={hardLeaderboard} easyLeaderboard={easyLeaderboard} retrieve={retrieveLeaderboard} level={level} />} />
       </Routes>
     </HashRouter>
   );
