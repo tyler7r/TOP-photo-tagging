@@ -1,6 +1,5 @@
 * {
     margin: 0px;
-    background-color: rgb(245, 245, 245);
 }
 
 #root {
@@ -22,29 +21,6 @@
     height: 96vh;
     margin-bottom: 16px;
     border: 3px solid white;
-}
-
-#end-modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background-color: orange;
-}
-
-.char-select {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-weight: bold;
-    font-size: 12px;
-    padding: 4px;
-    border-radius: 8px;
-}
-
-.char:hover {
-    cursor: pointer;
-    color: orange;
 }
 
 #character-list {
@@ -116,6 +92,8 @@
 
 #empty-character-list-msg {
     display: flex;
+    justify-content: center;
+    align-items: center;
     color: lightgray;
     -webkit-text-stroke: 1px gray;
     font-weight: bold;

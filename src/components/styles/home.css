@@ -58,8 +58,8 @@
 }
 
 .level-select-img {
-    border-top: 3px solid white;
-    border-bottom: 3px solid white;
+    border-top: 3px solid lightgray;
+    border-bottom: 3px solid lightgray;
     border-left: 3px solid red;
     border-right: 3px solid red;
 }

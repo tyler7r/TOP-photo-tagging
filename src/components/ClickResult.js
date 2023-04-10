@@ -9,7 +9,7 @@ export const ClickResult = (props) => {
 
     setTimeout(() => {
         props.setClickResult('none');
-    }, 3000)
+    }, 2000)
 
     if (props.clickResult === 'none') return
     else if (props.clickResult === 'Wrong') {
