@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Game } from './components/Game';
@@ -50,7 +50,7 @@ export default function App() {
       <Header style={navStyle} />
       <Routes>
         <Route path='/' element={<Home style={navStyle} setLevel={setLevel} />} />
-        <Route path='/game' element={<Game style={navStyle} retrieve={retrieveLeaderboard} level={level} />} />
+        <Route path='/game' element={<Game setLevel={setLevel} style={navStyle} retrieve={retrieveLeaderboard} level={level} />} />
         <Route path='/leaderboard' element={<Leaderboard hardLeaderboard={hardLeaderboard} easyLeaderboard={easyLeaderboard} retrieve={retrieveLeaderboard} level={level} />} />
       </Routes>
     </HashRouter>

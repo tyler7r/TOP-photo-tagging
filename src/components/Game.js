@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CharSelect } from './CharSelect';
 import { EndGame } from './EndGame';
 import { CharacterList } from './Characters';
 import { PlayAgain } from './PlayAgain';
 import { ClickResult } from './ClickResult';
 import './styles/game.css';
-import { getDoc, doc, updateDoc, onSnapshot, Firestore, collection, getDocs } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export const Game = (props) => {
@@ -110,6 +110,10 @@ export const Game = (props) => {
         else return false;
     }
 
+    const restart = (props) => {
+        props.setLevel(props.level);
+    }
+
     if (props.level === 'easy') {
         return (
             <div id='board'>
@@ -127,8 +131,9 @@ export const Game = (props) => {
                 <CharacterList remainingChars={remainingChars} />
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/track.jpg')} alt='track'/>
                 <CharSelect showMenu={showMenu} coords={coords} characters={characters} location={targetLocation} handleMenu={handleMenu} />
+                <ClickResult location={targetLocation} clickResult={clickResult} setClickResult={setClickResult} />
                 <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} level={props.level} setPlayAgain={setPlayAgain} />
-                <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} />
+                <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} lvl={props.level} restart={props.setLevel} />
             </div>
         )
     }

@@ -14,7 +14,7 @@ export const CharacterList = (props) => {
                 )
             })}
         </div> 
-    )} else {
+    )} else if (props.remainingChars.length === 0) {
         return (
         <div id='character-list'>
             <div id='empty-characater-list-msg'>All Characters Found!</div>

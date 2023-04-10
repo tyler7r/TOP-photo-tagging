@@ -37,12 +37,18 @@
     color: orange;
 }
 
+#character-list {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
 #character-list, #empty-character-list-msg {
     gap: 8px;
     display: flex;
     font-weight: bold;
-    justify-content: end;
-    width: 75%;
+    justify-content: start;
+    width: 1112px;
 }
 
 .character-list-img {

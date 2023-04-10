@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { getDocs, collection } from 'firebase/firestore';
-import { db } from '../firebase';
 
 export const Leaderboard = (props) => {
     let { easyLeaderboard, hardLeaderboard } = props
