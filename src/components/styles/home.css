@@ -23,7 +23,7 @@
 }
 
 .nav-link:hover {
-    color: red;
+    color: #e30000;
 }
 
 @media screen and (max-width: 999px) {
@@ -60,12 +60,12 @@
 .level-select-img {
     border-top: 3px solid lightgray;
     border-bottom: 3px solid lightgray;
-    border-left: 3px solid red;
-    border-right: 3px solid red;
+    border-left: 3px solid #e30000;
+    border-right: 3px solid #e30000;
 }
 
 .level-select-title {
-    color: red;
+    color: #e30000;
     font-size: 24px;
 }
 

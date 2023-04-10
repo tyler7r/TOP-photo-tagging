@@ -4,7 +4,7 @@
     background-color: white;
     padding: 12px;
     border-radius: 4px;
-    border: 3px solid red;
+    border: 3px solid #e30000;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,14 +38,14 @@
 
 #recorded-time {
     font-weight: bold;
-    color: red;
+    color: #e30000;
     font-size: 36px;
 }
 
 #submit-time {
     cursor: pointer;
     font-weight: bold;
-    color: red;
+    color: #e30000;
     padding: 4px;
     background-color: white;
     border: 2px solid gray;
@@ -54,7 +54,7 @@
 
 #submit-time:hover {
     color: white;
-    background-color: red;
+    background-color: #e30000;
     border: 2px solid gray;
     border-radius: 4px;
 }
