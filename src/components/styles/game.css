@@ -20,6 +20,8 @@
 
 .game-img {
     height: 96vh;
+    margin-bottom: 16px;
+    border: 3px solid white;
 }
 
 #end-modal {
@@ -48,15 +50,30 @@
 #character-list {
     position: sticky;
     top: 0;
-    background-color: white;
 }
 
 #character-list, #empty-character-list-msg {
-    gap: 8px;
+    gap: 36px;
     display: flex;
     font-weight: bold;
-    justify-content: start;
-    width: 1112px;
+    justify-content: center;
+    width: 100%;
+    background-image: url('../images/stripe.jpg');
+    height: 110px;
+    background-size: auto;
+}
+
+.character-list-item {
+    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    border: 2px solid lightgray;
+    padding: 4px;
+}
+
+.character-list-name {
+    background-color: #fefefe;
 }
 
 .character-list-img {
@@ -95,4 +112,12 @@
     padding: 8px;
     font-weight: bold;
     font-size: 24px;
+}
+
+#empty-character-list-msg {
+    display: flex;
+    color: lightgray;
+    -webkit-text-stroke: 1px gray;
+    font-weight: bold;
+    font-size: 64px;
 }
