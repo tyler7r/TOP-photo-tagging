@@ -3,6 +3,7 @@ import { CharSelect } from './CharSelect';
 import { EndGame } from './EndGame';
 import { CharacterList } from './Characters';
 import { PlayAgain } from './PlayAgain';
+import { ClickResult } from './ClickResult';
 import './styles/game.css';
 import { getDoc, doc, updateDoc, onSnapshot, Firestore, collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
@@ -115,6 +116,7 @@ export const Game = (props) => {
                 <CharacterList remainingChars={remainingChars} />
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/ski.jpg')} alt='ski'/>
                 <CharSelect coords={coords} characters={characters} showMenu={showMenu} location={targetLocation} handleMenu={handleMenu} />
+                <ClickResult location={targetLocation} clickResult={clickResult} setClickResult={setClickResult} />
                 <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} level={props.level} setPlayAgain={setPlayAgain} />
                 <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} />
             </div>
