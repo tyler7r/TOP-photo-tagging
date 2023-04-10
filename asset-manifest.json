@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/TOP-photo-tagging/static/css/main.c7be7054.css",
+    "main.js": "/TOP-photo-tagging/static/js/main.ee83e34c.js",
+    "static/js/787.7998832a.chunk.js": "/TOP-photo-tagging/static/js/787.7998832a.chunk.js",
+    "static/media/track.jpg": "/TOP-photo-tagging/static/media/track.dcd79bf1ce0619360780.jpg",
+    "static/media/ski.jpg": "/TOP-photo-tagging/static/media/ski.9736162ac89c68ce67a0.jpg",
+    "static/media/factory.jpg": "/TOP-photo-tagging/static/media/factory.e6a0e91a830aa9a07e1b.jpg",
+    "static/media/stripe.jpg": "/TOP-photo-tagging/static/media/stripe.bc3978f162fa21eb24ed.jpg",
+    "index.html": "/TOP-photo-tagging/index.html",
+    "main.c7be7054.css.map": "/TOP-photo-tagging/static/css/main.c7be7054.css.map",
+    "main.ee83e34c.js.map": "/TOP-photo-tagging/static/js/main.ee83e34c.js.map",
+    "787.7998832a.chunk.js.map": "/TOP-photo-tagging/static/js/787.7998832a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c7be7054.css",
+    "static/js/main.ee83e34c.js"
+  ]
+}
