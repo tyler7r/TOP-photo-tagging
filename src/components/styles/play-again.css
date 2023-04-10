@@ -1,0 +1,25 @@
+#play-again-modal {
+    position: absolute;
+    top: 45%;
+    background-color: white;
+    padding: 12px;
+    border-radius: 4px;
+    border: 3px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    height: 10%;
+    font-size: 24px;
+}
+
+.play-again-btn {
+    text-decoration: none;
+    color:gray;
+    font-weight: bold;
+}
+
+.play-again-btn:hover {
+    color: red;
+}

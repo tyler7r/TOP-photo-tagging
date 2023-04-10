@@ -31,6 +31,7 @@ export const Game = (props) => {
 
     // handles clicks on gameboard, populates character select menu at the clicked spot
     const handleClick = (e) => {
+        if (finishedGame === true || playAgain === true) return
         e.preventDefault();
 
         let xCoord = Math.round((e.nativeEvent.offsetX / e.nativeEvent.target.offsetWidth) * 100)

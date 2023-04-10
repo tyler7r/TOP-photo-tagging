@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Game } from './components/Game';
@@ -31,12 +31,27 @@ export default function App() {
     setHardLeaderboard(hardCopy);
   }
 
+  useEffect(() => {
+    retrieveLeaderboard()
+  }, []);
+
   const sortLeaderboard = (array) => {
     array.sort((a, b) => a.time - b.time);
     for (let i = 0; i < array.length; i++) {
       array[i].position = i + 1;
     }
+    timerStyling(array)
     console.log(array);
+  }
+
+  const timerStyling = (array) => {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].time > 60) {
+        array[i].time = `${Math.floor(array[i].time / 60)}m ${Math.round(array[i].time % 60)}s`
+      } else {
+        array[i].time = `${array[i].time.toFixed(2)}s`
+      }
+    }
   }
 
   const navStyle = {
