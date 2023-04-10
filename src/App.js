@@ -25,8 +25,18 @@ export default function App() {
       hardCopy.push(doc.data());
       hardCopy[hardCopy.length - 1].id = doc.id;
     })
+    sortLeaderboard(easyCopy);
+    sortLeaderboard(hardCopy);
     setEasyLeaderboard(easyCopy);
     setHardLeaderboard(hardCopy);
+  }
+
+  const sortLeaderboard = (array) => {
+    array.sort((a, b) => a.time - b.time);
+    for (let i = 0; i < array.length; i++) {
+      array[i].position = i + 1;
+    }
+    console.log(array);
   }
 
   const navStyle = {

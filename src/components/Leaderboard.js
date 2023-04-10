@@ -8,7 +8,7 @@ export const Leaderboard = (props) => {
     
     useEffect(() => { 
         props.retrieve();
-    }, [])
+    }, []);
 
     const changeLeaderboard = (level) => {
         if (level === 'hard') {
@@ -28,6 +28,7 @@ export const Leaderboard = (props) => {
                 {display.map((score) => {
                     return (
                         <div key={score.id} className='leaderboard-entry'>
+                            <div className='entry-position'>{score.position}. </div>
                             <div className='entry-name'>{score.name}</div>
                             <div className='entry-time'>{score.time}</div>
                         </div>
