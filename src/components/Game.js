@@ -18,6 +18,8 @@ export const Game = (props) => {
 
     const [finishedGame, setFinishedGame] = useState(false);
 
+    const [clickResult, setClickResult] = useState('none');
+
     const [startTime, setStartTime] = useState(0);
 
     const [totalTime, setTotalTime] = useState(0);
@@ -61,8 +63,9 @@ export const Game = (props) => {
         if (xCheck === true && yCheck === true) {
             character.Found = true;
             setCharacters({...characters});
+            setClickResult(char);
         } else {
-
+            setClickResult('Wrong');
         }
         setShowMenu(false);
     }
@@ -85,10 +88,6 @@ export const Game = (props) => {
                 setFinishedGame(true);
                 let total = (new Date () - startTime) / 1000;
                 setTotalTime(total);
-                // for (const char in characters) {
-                //     characters[char].Found = false;
-                // }
-                // setRemainingChars(characters);
             }
         }
 
@@ -99,6 +98,10 @@ export const Game = (props) => {
     useEffect(() => {
         setStartTime(new Date());
     }, [])
+
+    useEffect(() => {
+        props.retrieve()
+    }, [playAgain])
 
     // helper function to allow for some flexibility in where the user clicks for a correct answer
     const between = (value, integer) => {

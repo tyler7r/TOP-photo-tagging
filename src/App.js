@@ -50,7 +50,7 @@ export default function App() {
       <Header style={navStyle} />
       <Routes>
         <Route path='/' element={<Home style={navStyle} setLevel={setLevel} />} />
-        <Route path='/game' element={<Game style={navStyle} level={level} />} />
+        <Route path='/game' element={<Game style={navStyle} retrieve={retrieveLeaderboard} level={level} />} />
         <Route path='/leaderboard' element={<Leaderboard hardLeaderboard={hardLeaderboard} easyLeaderboard={easyLeaderboard} retrieve={retrieveLeaderboard} level={level} />} />
       </Routes>
     </HashRouter>
