@@ -90,7 +90,7 @@ export const Leaderboard = (props) => {
             </div>
             {(leaderboard !== null && leaderboard.length !== 0) &&
                 <div id="leaderboard">
-                    {display.map((score) => {
+                    {leaderboard.map((score) => {
                         if (score.position % 2 !== 0) {
                             return (
                                 <div key={score.id} className='leaderboard-entry odd'>
