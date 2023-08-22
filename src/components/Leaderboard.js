@@ -78,7 +78,7 @@ export const Leaderboard = (props) => {
     }
 
     useEffect(() => { 
-        retrieveLeaderboard;
+        retrieveLeaderboard();
         leaderboardDisplay();
     }, [display]);
 
