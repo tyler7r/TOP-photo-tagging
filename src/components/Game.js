@@ -101,9 +101,9 @@ export const Game = (props) => {
         setShowMenu(false);
     }
 
-    useEffect(() => {
-        props.retrieve()
-    }, [playAgain])
+    // useEffect(() => {
+    //     props.retrieve()
+    // }, [playAgain])
 
     // helper function to allow for some flexibility in where the user clicks for a correct answer
     const between = (value, integer) => {
