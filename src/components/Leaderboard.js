@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getDocs, collection } from 'firebase/firestore';
-import { db } from './firebase';
+import { db } from '../firebase';
 import '../components/styles/leaderboard.css'
 
 export const Leaderboard = (props) => {
