@@ -118,7 +118,7 @@ export const Game = (props) => {
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/ski.jpg')} alt='ski'/>
                 <CharSelect coords={coords} characters={characters} showMenu={showMenu} location={targetLocation} handleMenu={handleMenu} />
                 <ClickResult location={targetLocation} clickResult={clickResult} setClickResult={setClickResult} />
-                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} setPlayAgain={setPlayAgain} />
+                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} setPlayAgain={setPlayAgain} level={props.level} />
                 <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} />
             </div>
         )
@@ -129,7 +129,7 @@ export const Game = (props) => {
                 <img onClick={(e) => {handleClick(e)}} className='game-img' src={require('./images/track.jpg')} alt='track'/>
                 <CharSelect showMenu={showMenu} coords={coords} characters={characters} location={targetLocation} handleMenu={handleMenu} />
                 <ClickResult location={targetLocation} clickResult={clickResult} setClickResult={setClickResult} />
-                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} setPlayAgain={setPlayAgain} />
+                <EndGame status={finishedGame} setStatus={setFinishedGame} time={totalTime} setPlayAgain={setPlayAgain} level={props.level} />
                 <PlayAgain navStyle={props.style} playAgain={playAgain} setPlayAgain={setPlayAgain} />
             </div>
         )
