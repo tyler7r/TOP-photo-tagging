@@ -9,8 +9,8 @@ import { db } from './firebase';
 
 export default function App() {
   const [level, setLevel] = useState('');
-  const [easyLeaderboard, setEasyLeaderboard] = useState([]);
-  const [hardLeaderboard, setHardLeaderboard] = useState([]);
+  const [easyLeaderboard, setEasyLeaderboard] = useState(null);
+  const [hardLeaderboard, setHardLeaderboard] = useState(null);
 
   const retrieveLeaderboard = async () => {
     let easyCopy = [];

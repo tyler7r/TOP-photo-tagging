@@ -41,27 +41,32 @@ export const Leaderboard = (props) => {
                 <div onClick={() => changeLeaderboard('easy')} id='easy-leaderboard-btn'>EASY</div>
                 <div onClick={() => changeLeaderboard('hard')} id='hard-leaderboard-btn'>HARD</div>
             </div>
-            <div id="leaderboard">
-                {display.map((score) => {
-                    if (score.position % 2 !== 0) {
-                        return (
-                            <div key={score.id} className='leaderboard-entry odd'>
-                                <div className='entry-position'>{score.position}. </div>
-                                <div className='entry-name'>{score.name}</div>
-                                <div className='entry-time'>{score.time}</div>
-                            </div>
-                        ) 
-                    } else {
-                        return (
-                            <div key={score.id} className='leaderboard-entry even'>
-                                <div className='entry-position'>{score.position}. </div>
-                                <div className='entry-name'>{score.name}</div>
-                                <div className='entry-time'>{score.time}</div>
-                            </div>
-                        )
-                    }
-                })}
-            </div>
+            {(display !== null && display.length !== 0) &&
+                <div id="leaderboard">
+                    {display.map((score) => {
+                        if (score.position % 2 !== 0) {
+                            return (
+                                <div key={score.id} className='leaderboard-entry odd'>
+                                    <div className='entry-position'>{score.position}. </div>
+                                    <div className='entry-name'>{score.name}</div>
+                                    <div className='entry-time'>{score.time}</div>
+                                </div>
+                            ) 
+                        } else {
+                            return (
+                                <div key={score.id} className='leaderboard-entry even'>
+                                    <div className='entry-position'>{score.position}. </div>
+                                    <div className='entry-name'>{score.name}</div>
+                                    <div className='entry-time'>{score.time}</div>
+                                </div>
+                            )
+                        }
+                    })}
+                </div>
+            }
+            {(display === null || display.length === 0) && 
+                <div id='leaderboard'>No entries found</div>
+            }
         </div>
     )
 }
